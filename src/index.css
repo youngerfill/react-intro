@@ -49,3 +49,12 @@ ol, ul {
     margin-left: 20px;
 }
 
+.normalText
+{
+    font-weight: normal;
+}
+
+.boldText
+{
+    font-weight: bold;
+}
