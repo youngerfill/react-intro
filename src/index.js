@@ -31,11 +31,15 @@ class Board extends React.Component
             let row = []
             for (let columnNumber=0; columnNumber<3; columnNumber++)
             {
-                row.push(<Square value={this.props.squares[rowNumber*3+columnNumber] }
-                onClick={() => this.props.onClick(rowNumber*3+columnNumber)}
-                />)
+                row.push(
+                    <Square
+                        key={rowNumber*3+columnNumber}
+                        value={ this.props.squares[rowNumber*3+columnNumber] }
+                        onClick={() => this.props.onClick(rowNumber*3+columnNumber)}
+                    />
+                )
             }
-            board.push(<div className="board-row">{row}</div>)
+            board.push(<div key={rowNumber} className="board-row">{row}</div>)
         }
         return board
     }
@@ -43,11 +47,7 @@ class Board extends React.Component
     render()
     {
         return (
-            <div>
-
-            {this.createBoard()}
-
-            </div>
+            <div>{this.createBoard()}</div>
         );
     }
 }
