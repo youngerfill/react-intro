@@ -18,7 +18,7 @@ v add history
 
         v 4. Add a toggle button that lets you sort the moves in either ascending or descending order.
         v 5. When someone wins, highlight the three squares that caused the win.
-        6. When no one wins, display a message about the result being a draw.
+        v 6. When no one wins, display a message about the result being a draw.
 
 . add modules hyperscript & hyperscript-helpers
     . How to add modules? npm install?
