@@ -63,6 +63,7 @@ class Game extends React.Component
             }],
             stepNumber: 0,
             xIsNext: true,
+            reverse: false,
         };
     }
 
@@ -95,14 +96,8 @@ class Game extends React.Component
         });
     }
 
-    render()
+    renderHistoryButton(step, move)
     {
-        const history = this.state.history;
-        const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares);
-
-        const moves = history.map((step, move) =>
-        {
             const textWeight = (this.state.stepNumber === move) ? 'boldText' : 'normalText';
 
             const description = move ?
@@ -118,7 +113,21 @@ class Game extends React.Component
                 <button onClick={() => this.jumpTo(move)} className={textWeight}>{description}{location}</button>
                 </li>
             );
-        });
+    }
+
+    renderHistory(history, reverse)
+    {
+        if (reverse)
+            return <ol reversed>{history.slice(0).reverse().map((step,move) =>  { return this.renderHistoryButton(step, history.length - 1 - move) } )}</ol>
+        else
+            return <ol>{history.map((step,move) =>  { return this.renderHistoryButton(step, move) } )}</ol>
+    }
+
+    render()
+    {
+        const history = this.state.history;
+        const current = history[this.state.stepNumber];
+        const winner = calculateWinner(current.squares);
 
         let status;
         if (winner) {
@@ -129,16 +138,21 @@ class Game extends React.Component
 
         return (
             <div className="game">
-            <div className="game-board">
-            <Board
-                squares={current.squares}
-                onClick={(i) => this.handleClick(i)}
-            />
-            </div>
-            <div className="game-info">
-            <div>{ status }</div>
-            <ol>{ moves }</ol>
-            </div>
+                <div className="game-board">
+                    <Board
+                        squares={current.squares}
+                        onClick={(i) => this.handleClick(i)}
+                    />
+                </div>
+                <div className="game-info">
+                    <div>{ status }</div>
+                    { this.renderHistory(history, this.state.reverse) }
+                </div>
+                <div className="game-controls">
+                    <div>
+                        <label><input onChange={ (e) => this.setState({ reverse: e.target.checked }) } type="checkbox" id="reverse" name="reverse"/>Reverse history</label>
+                    </div>
+                </div>
             </div>
         );
     }
