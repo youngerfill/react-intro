@@ -17,10 +17,12 @@ v add history
             --> tedious because loops are not allowed inside JSX code
 
         v 4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-        5. When someone wins, highlight the three squares that caused the win.
+        v 5. When someone wins, highlight the three squares that caused the win.
         6. When no one wins, display a message about the result being a draw.
 
 . add modules hyperscript & hyperscript-helpers
     . How to add modules? npm install?
     . Rewrite JSX with hs helper functions.
     . are loops allowed in render method when using HS?
+
+. add a "start a new game" button
