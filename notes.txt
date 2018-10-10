@@ -25,4 +25,6 @@ v add history
     . Rewrite JSX with hs helper functions.
     . are loops allowed in render method when using HS?
 
-. add a "start a new game" button
+x add a "start a new game" button
+
+. split up index.js into modules?
