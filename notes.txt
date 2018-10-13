@@ -20,10 +20,19 @@ v add history
         v 5. When someone wins, highlight the three squares that caused the win.
         v 6. When no one wins, display a message about the result being a draw.
 
-. add modules hyperscript & hyperscript-helpers
-    . How to add modules? npm install?
+. Split code into modules
+
+v add module react-hyperscript-helpers
     . Rewrite JSX with hs helper functions.
-    . are loops allowed in render method when using HS?
+    v are loops allowed in render method when using HS?
+        --> no
+            https://stackoverflow.com/a/22877049/3805088
+            "Think of it like you're just calling JavaScript functions. You can't put a for loop inside a function call:
+            return tbody(
+                for (var i = 0; i < numrows; i++) {
+                        ObjectRow()
+                            } 
+                            )"
 
 x add a "start a new game" button
 
